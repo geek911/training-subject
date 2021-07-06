@@ -1,6 +1,7 @@
 """
 Choice for the first questionnaire
 """
+from edc_constants.constants import OTHER
 
 MARITAL_STATUS = [
     ('single', 'Single'),
@@ -25,7 +26,8 @@ TYPE_OF_WORK = [
     ('self_employed_making_money_full_time', 'Self-employed making money (full time)'),
     ('self_employed_making_money_part_time', 'Self-employed making money (part time)'),
     ('self_employed_in_agriculture', 'Self employed in agriculture'),
-    ('dont_want_to_answer', "Don't want to answer")
+    ('dont_want_to_answer', "Don't want to answer"),
+    (OTHER, OTHER)
 ]
 
 PREVIOUS_JOB_TYPE_WORK = [
@@ -48,7 +50,7 @@ PREVIOUS_JOB_TYPE_WORK = [
     ('health_care_worker', 'Health care worker'),
     ('other_professional', 'Other professional'),
     ('dont_want_to_answer', 'Dont want to answer'),
-    ('other', 'Other')
+    (OTHER, OTHER)
 ]
 
 SALARY_RANGE = [
@@ -60,7 +62,7 @@ SALARY_RANGE = [
     ('5000 - 10000', 'BWP 5000 - 10000'),
     ('more_than_10000', 'More than BWP 10000'),
     ('dont_want_to_answer', "Don't want to answer"),
-    ('other', 'Other')
+    (OTHER, OTHER)
 ]
 
 '''

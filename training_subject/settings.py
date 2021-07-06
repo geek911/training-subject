@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'edc_consent.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_lab.apps.AppConfig',
+    'edc_appointment.apps.AppConfig',
     'edc_reference.apps.AppConfig',
     'edc_metadata_rules.apps.AppConfig',
     'edc_registration.apps.AppConfig',
@@ -56,11 +57,11 @@ INSTALLED_APPS = [
     'edc_metadata.apps.AppConfig',
     'edc_subject_dashboard.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
-    'edc_appointment.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
     'training_subject.apps.TrainingSubjectConfig',
     'django_crypto_fields.apps.AppConfig',
-    'edc_identifier.apps.AppConfig'
+    'edc_identifier.apps.AppConfig',
+    'training_validations.apps.TrainingValidationsConfig'
 
 ]
 

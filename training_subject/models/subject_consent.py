@@ -1,3 +1,5 @@
+from django.core.exceptions import ValidationError
+from django.apps import apps as django_apps
 from django.db import models
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
@@ -13,6 +15,7 @@ from edc_identifier.subject_identifier import SubjectIdentifier
 from edc_registration.model_mixins import UpdatesOrCreatesRegistrationModelMixin
 from edc_search.model_mixins import SearchSlugManager, SearchSlugModelMixin
 from edc_constants.choices import GENDER
+from edc_utils import age
 
 from ..choices import MARITAL_STATUS, LIVE_WITH
 
@@ -80,6 +83,18 @@ class SubjectConsent(
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+        screening_cls = django_apps.get_model('training_subject.subjectscreening')
+        try:
+            screening_obj = screening_cls.objects.get(
+                screening_identifier=self.screening_identifier)
+        except screening_cls.DoesNotExist:
+            raise ValidationError(f'Missing subject screening object for participant{self.subject_identifier}')
+        else:
+            # screening_obj.age_in_years = age(self.dob, get_utcnow())
+            screening_obj.save()
+        self.subject_type = 'subject'
+        self.version = '1'
 
     class Meta(ConsentModelMixin.Meta):
         app_label = 'training_subject'

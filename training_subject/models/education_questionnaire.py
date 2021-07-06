@@ -28,7 +28,6 @@ class EducationQuestionnaire(CrfModelMixin,
                              SiteModelMixin,
                              ReferenceModelMixin,
                              BaseUuidModel):
-
     subject_visit = models.ForeignKey(SubjectVisit, on_delete=models.DO_NOTHING)
 
     working_status = models.CharField(
@@ -43,10 +42,24 @@ class EducationQuestionnaire(CrfModelMixin,
         max_length=50
     )
 
+    other_type_of_work = models.CharField(
+        verbose_name='Other type of work',
+        max_length=100,
+        null=True,
+        blank=True
+    )
+
     previous_work = models.CharField(
         verbose_name='Describe the work that you do or did in your most recent job. If you have more than one profession, choose the one you spend the most time doing.',
         choices=PREVIOUS_JOB_TYPE_WORK,
         max_length=50
+    )
+
+    other_previous_work = models.CharField(
+        verbose_name='Specify your most recent work',
+        max_length=100,
+        null=True,
+        blank=True
     )
 
     salary_range = models.CharField(
